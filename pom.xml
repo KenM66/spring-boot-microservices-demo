@@ -79,7 +79,7 @@
           <from>
             <image>eclipse-temurin:17.0.4.1_1-jre</image>
           </from>
-          <to><image>registry.hub.docker.com/kenm66/${artifactId}</image></to>
+          <to><image>registry.hub.docker.com/kenm66/${project.artifactId}</image></to>
         </configuration>
       </plugin>
     </plugins>

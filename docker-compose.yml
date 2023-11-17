@@ -146,44 +146,46 @@ services:
       - mongo
       - discovery-server
       - api-gateway
-#
-#  ## Order-Service Docker Compose Config
-#  order-service:
-#    container_name: order-service
-#    image: kenm66/order-service:latest
-#    pull_policy: always
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-order:5431/order-service
-#    depends_on:
-#      - postgres-order
-#      - broker
-#      - zipkin
-#      - discovery-server
-#      - api-gateway
-#
-#  ## Inventory-Service Docker Compose Config
-#  inventory-service:
-#    container_name: inventory-service
-#    image: kenm66/inventory-service:latest
-#    pull_policy: always
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-inventory:5432/inventory-service
-#    depends_on:
-#      - postgres-inventory
-#      - discovery-server
-#      - api-gateway
-#
-#  ## Notification-Service Docker Compose Config
-#  notification-service:
-#    container_name: notification-service
-#    image: kenm66/notification-service:latest
-#    pull_policy: always
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    depends_on:
-#      - zipkin
-#      - broker
-#      - discovery-server
-#      - api-gateway
+
+  ## Order-Service Docker Compose Config
+  order-service:
+    container_name: order-service
+    image: kenm66/order-service:latest
+    pull_policy: always
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-order:5431/order-service
+
+    depends_on:
+      - postgres-order
+      - broker
+      - zipkin
+      - discovery-server
+      - api-gateway
+
+  ## Inventory-Service Docker Compose Config
+  inventory-service:
+    container_name: inventory-service
+    image: kenm66/inventory-service:latest
+    pull_policy: always
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-inventory:5432/inventory-service
+
+    depends_on:
+    # - postgres-inventory
+      - discovery-server
+      - api-gateway
+
+  ## Notification-Service Docker Compose Config
+  notification-service:
+    container_name: notification-service
+    image: kenm66/notification-service:latest
+    pull_policy: always
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - zipkin
+      - broker
+      - discovery-server
+      - api-gateway
